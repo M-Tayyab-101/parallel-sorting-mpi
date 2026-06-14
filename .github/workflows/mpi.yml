@@ -1,4 +1,4 @@
-name: MPI Parallel Sorting
+name: MPI Parallel Sort
 
 on:
   workflow_dispatch:
@@ -8,18 +8,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install OpenMPI
+      - name: Install MPI
         run: |
           sudo apt update
           sudo apt install -y openmpi-bin libopenmpi-dev
 
-      - name: Compile Program
+      - name: Compile
         run: |
           mpicc parallel_sort.c -o parallel_sort
 
-      - name: Execute Program
+      - name: Run
         run: |
           mpirun --allow-run-as-root -np 4 ./parallel_sort 16
