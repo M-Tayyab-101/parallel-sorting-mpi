@@ -25,3 +25,7 @@ jobs:
       - name: Run with 4 processes
         run: |
           mpirun --allow-run-as-root --oversubscribe -np 4 ./parallel_sort 16
+          
+      - name: Run with 8 processes
+        run: |
+          mpirun --allow-run-as-root --oversubscribe -np 8 ./parallel_sort 80
